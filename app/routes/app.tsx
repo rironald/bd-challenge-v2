@@ -15,6 +15,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   return { apiKey: process.env.SHOPIFY_API_KEY || "" };
 };
 
+const products = [{ id: "8158098325676", title: "Product 1" }];
+
 export default function App() {
   const { apiKey } = useLoaderData<typeof loader>();
 
@@ -24,6 +26,12 @@ export default function App() {
         <Link to="/app" rel="home">
           Home
         </Link>
+        <Link to="/app/review">Review</Link>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link to={`/app/products/${product.id}`}>{product.title}</Link>
+          </li>
+        ))}
       </NavMenu>
       <Outlet />
     </AppProvider>

@@ -1,0 +1,31 @@
+{% assign avg_rating = block.settings.product.metafields.demo.avg_rating.value | round %}
+
+<div>
+    <span style="color:{{ block.settings.color }}">
+        {% render 'stars', rating: avg_rating, color: block.settings.color  %}
+    </span>
+</div>
+
+  
+  {% schema %}
+  {
+    "name": "Review",
+    "target": "section",
+    "enabled_on": {
+      "templates": ["product"]
+    },
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product",
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Star Color",
+        "default": "#F15152",
+      }
+    ]
+  }
+  {% endschema %}

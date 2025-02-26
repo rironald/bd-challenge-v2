@@ -1,0 +1,10 @@
+{% assign rating = rating | default: 0 %}
+<div class="star-rating">
+  {% for i in (1..5) %}
+    {% if i <= rating %}
+      <span class="star filled" style="color: {{ color }};">★</span>
+    {% else %}
+      <span class="star">☆</span>
+    {% endif %}
+  {% endfor %}
+</div>
